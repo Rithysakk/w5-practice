@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("HELLO")),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GradientButton("hello 1", start: Colors.blue, end: Colors.red),
+              SizedBox(height: 20),
+              GradientButton("hello 2", start: Colors.blue, end: Colors.red),
+              SizedBox(height: 20),
+              GradientButton("hello 3", start: Colors.blue, end: Colors.red),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+class GradientButton extends StatelessWidget {
+  final String text;
+  final Color start;
+  final Color end;
+
+  const GradientButton(
+    this.text, {
+    Key? key,
+    required this.start,
+    required this.end,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(40),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [start, end],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Text(
+        text.toUpperCase(),
+        style: TextStyle(
+          fontSize: 35,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
